@@ -43,6 +43,18 @@ step '要素 :selector が存在すること' do |selector|
   expect(page.has_css?(selector, visible: :all)).to eq true
 end
 
+step '要素 :selector が存在しないこと' do |selector|
+  expect(page.has_css?(selector, visible: :all)).to eq false
+end
+
 step '要素 :selector が :n 個存在すること' do |selector, n|
   expect(page.has_css?(selector, count: n, visible: :all)).to eq true
+end
+
+step ':factory_name のテストデータを作成する' do |factory_name|
+  FactoryGirl.create(factory_name)
+end
+
+step ':file_name にスクリーンショットをとる' do |file_name|
+    page.save_screenshot(file_name, full: true)
 end
