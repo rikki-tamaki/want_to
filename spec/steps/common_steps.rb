@@ -28,6 +28,10 @@ step ':movie_id 以外のの再生画面が表示されていること' do |movi
   expect(current_path).not_to eq "/home/movie/#{movie_id}"
 end
 
+step '再生画面が表示されていること' do
+  expect(current_path).to match "/home/movie/.*"
+end
+
 step 'メッセージ :message が表示されていること' do |message|
   expect(page).to have_content message
 end
@@ -73,4 +77,21 @@ end
 
 step ':file_name にスクリーンショットをとる' do |file_name|
     page.save_screenshot(file_name, full: true)
+end
+
+step 'マイページを表示する' do
+  visit '/my_page/index'
+end
+
+step 'マイページが表示されていること' do
+  expect(current_path).to eq '/my_page/index'
+end
+
+step ':email と :password でログインする' do |email, password|
+   visit '/users/sign_in'
+
+   fill_in 'user[email]',    with: email
+   fill_in 'user[password]', with: password
+
+   click_button 'ログイン'
 end
