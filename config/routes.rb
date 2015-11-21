@@ -8,15 +8,16 @@ Rails.application.routes.draw do
   get 'home/index'
   post 'home/search'
   post 'home/create'
-  get 'home/search/:q' => 'home#search', constraints: { q: '/.*/' }
+  get 'home/search/:q' => 'home#search', constraints: { q: /.*/ }
   get 'home/movie'
   get 'home/movie/:id' => 'home#movie'
   get 'home/movie/:id/:num' => 'home#movie'
   get 'home/about'
   get '/admin' => 'admin/base#index'
+  get 'welcome' => 'welcome#index'
 
   # You can have the root of your site routed with "root"
-  root 'admin/base#index'
+  root 'welcome#index'
   #root 'home#index'
 
   # Example of regular route:
