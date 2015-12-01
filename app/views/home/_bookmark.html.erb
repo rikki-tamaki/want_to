@@ -15,4 +15,79 @@
     </span>
     <%= link_to bookmark.user.nickname, {:controller => "user", :action => "show", :id => bookmark.user } %>
 </li>
+<% bookmarks.length %>
 <% end %>
+<table id="data-list">
+    <tr>
+    <th>投稿順　　</th>
+    <th>再生位置　</th>
+    <th>コメント　</th>
+    <th>ユーザー　</th>
+    </tr>
+ num = 0;
+    <% bookmarks.each do |bookmark| %>
+    num = num + 1;
+    <td>
+    num
+    </td>
+    <td>
+    <a class="bookmark" href="#" data-vpos="<%= bookmark.start_vpos %>">
+        <%= vpos_to_h_mm_ss(bookmark.start_vpos) %>
+    </a>
+    </td>
+    <span>
+        コメント：<%= bookmark.comment %>, 
+    </span>
+
+    <%= link_to bookmark.user.nickname, {:controller => "user", :action => "show", :id => bookmark.user } %>
+<% end %>
+</table>
+<br>
+<br>
+
+<p>
+    テーブル以外の要素でも編集可能にできます。
+</p>
+<h3>click!</h3>
+
+
+<script type="text/javascript" src="/lib/jquery-1.8.0/js"></script>
+
+<script type="text/javascript">
+(function(documet){
+    
+    $(document).ready(function(){
+    	 $("#data-list > tbody > tr > td").click(edit_toggle());
+           $("h3").click(edit_toggle());
+
+    });
+
+    
+
+    function edit_toggle(){
+        var edit_flag = false;
+        return function(){
+            if(edit_flag) return;
+            var $input = $("<input>").attr("type","text").val($(this).text());
+            $(this).html($input); 
+            
+            $("input", this).focus().blur(function(){
+                save(this);
+                $(this).after($(this).val()).unbind().remove();
+                edit_flag = false;
+            });
+            edit_flag = true;
+        }
+    }    
+    
+    function save(elm){
+        alert("「"+$(elm).val()+"」を保存しました"); //保存する処理をここに書く
+    }
+    
+})(document);
+
+
+
+
+
+</script>
