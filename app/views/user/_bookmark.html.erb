@@ -1,9 +1,17 @@
 <% bookmarks.each do |bookmark| %>
-    <li>
-        <span>動画ID：</span>
+<tr id="no<%= bookmark.id.to_s %>">
+    <td>
         <%= link_to bookmark.smid, { :controller => 'home', :action => 'movie', :id => bookmark.smid }, :data => { :'no-turbolink' => '1' }, :class => 'bookmark'  %>
-        <span>
-            , 再生位置：<%= vpos_to_h_mm_ss(bookmark.start_vpos) %>, コメント： <%= bookmark.comment %>
-        </span>
-    </li>
+    </td>
+    <td class="Editable">
+        <%= vpos_to_h_mm_ss(bookmark.start_vpos) %>        
+    </td>
+    <td class="Editable">
+        <%= bookmark.comment %>
+    </td>
+    <td>
+        <input class="Edit" type="button" value="登録！" >
+    </td>
+</tr>
+
 <% end %>
