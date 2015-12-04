@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/admin' => 'admin/base#index'
   get 'welcome' => 'welcome#index'
   get 'user/:id' => 'user#show', constraints: { id: /[0-9]+/ }
+  post 'my_page/update'
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'

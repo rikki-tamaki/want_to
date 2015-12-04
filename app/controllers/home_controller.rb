@@ -194,4 +194,8 @@ class HomeController < ApplicationController
       format.js
     end
   end
+
+  def update
+    
+  end
 end
