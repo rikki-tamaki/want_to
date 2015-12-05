@@ -3,21 +3,11 @@
 <h2>ユーザー情報</h2>
 メールアドレス: <%= current_user.email %>
 <h2>ふせん</h2>
-<div class="table-responsive">
-  <table id="bookmark" class="table table-hover table-striped table-bordered">
-    <thead>
-      <tr>
-        <th>動画ID</th>
-	<th>再生位置</th>
-	<th>コメント</th>
-	<th>登録ボタン</th>
-      </tr>
-    </thead>
-  <tbody>
-    <%= render partial: 'user/bookmark', locals: { f: @bookmarks } %>
-  </tbody>
-  </table>
-</div>
+<%= form_for @bookmark do |f| %>
+  <%= f.text_field :comment %>
+  <%= f.text_area :vpos_time %>
+  <%= f.submit "Send" %>
+<% end %>
 
 <script>
 (function(documet){

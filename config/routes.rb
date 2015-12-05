@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get '/rails/mailers/*path', to: "rails/mailers#preview", as: 'mail_preview'
   end
 
+  resources(:bookmarks)
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
