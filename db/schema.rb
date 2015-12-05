@@ -39,6 +39,10 @@ ActiveRecord::Schema.define(version: 20151123092238) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "nickname"
+    t.string   "uid",                    default: "", null: false
+    t.string   "provider",               default: "", null: false
+    t.string   "name"
+    t.string   "token",                  default: "", null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

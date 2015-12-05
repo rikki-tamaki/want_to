@@ -8,9 +8,9 @@ class MyPageController < ApplicationController
 
   def update
     bookmark = Bookmark.find(current_user.id)
-    if bookmark.update(:start_vpos => params[:vpos_time].to_i, :comment => params[:comment])
-      redirect_to action: 'index'
-    else redirect_to action: 'index'
+    if bookmark.update(:start_vpos => params['vpos_time'].to_i, :comment => params['comment'])
+      redirect_to action: 'index' @msg = "更新しました"
+    else redirect_to action: 'index' @msg = "更新に失敗しました"
     end
   end
 end
