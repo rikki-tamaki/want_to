@@ -8,4 +8,3 @@
 heroku : http://niconico-highlight.herokuapp.com/
 
 [![Build Status](https://travis-ci.org/yuya-painapo/want_to.svg?branch=master)](https://travis-ci.org/yuya-painapo/want_to)
-
