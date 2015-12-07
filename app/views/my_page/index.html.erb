@@ -4,54 +4,45 @@
 メールアドレス: <%= current_user.email %>
 <h2>ふせん</h2>
 <div class="table-responsive">
-  <table id="bookmark" class="table table-hover table-striped table-bordered">
-    <thead>
-      <tr>
-        <th>動画ID</th>
-	<th>再生位置</th>
-	<th>コメント</th>
-	<th>登録ボタン</th>
-      </tr>
-    </thead>
-  <tbody>
-    <%= render partial: 'user/bookmark', locals: { bookmarks: @bookmarks } %>
-  </tbody>
-  </table>
+    <table id="bookmark" class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>動画ID</th>
+                <th>再生位置</th>
+                <th>コメント</th>
+                <th>その他</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%= render partial: 'user/bookmark', locals: { bookmarks: @bookmarks } %>
+        </tbody>
+    </table>
 </div>
 
 <script>
-(function(documet){
+    $(function() {
+        $(document).on("click", ".btnEdit", function(e) {
+            e.preventDefault();
+            var no = $(this).attr("data-no");
+            $("#no" + no + " .start_vpos").toggle();
+            $("#no" + no + " .comment").toggle();
+            $("#no" + no + " .btnGroup").toggle();
+            $(this).toggle();
+        });
 
-    $(document).ready(function(){
-         $(".Editable").click(edit_toggle());
-           $("h3").click(edit_toggle());
-           $(".Edit").click(Edit());
+        $(document).on("click", ".btnCancel", function(e) {
+            e.preventDefault();
+            var no = $(this).attr("data-no");
+            $("#no" + no + " .start_vpos").toggle();
+            $("#no" + no + " .comment").toggle();
+            $("#no" + no + " .btnGroup").toggle();
+            $("#no" + no + " .btnEdit").toggle();
+        });
+
+        $(document).on("click", ".btnUpdate", function(e) {
+            e.preventDefault();
+            $(this).parent().parent().submit();
+        });
     });
-
-    function edit_toggle(){
-        var edit_flag = false;
-        return function(){
-            if(edit_flag) return;
-            var $input = $("<input>").attr("type","text").val($(this).text().trim());
-            $(this).html($input);
-
-            $("input", this).focus().blur(function(){
-                save(this);
-                $(this).after($(this).val()).unbind().remove();
-                edit_flag = false;
-            });
-            edit_flag = true;
-        }
-    }
-
-    function save(elm){
-        alert("「"+$(elm).val()+"」を保存しました"); //保存する処理をここに書く
-    }
-
-    function Edit(){
-        
-    }
-})(document);
-
 </script>
 

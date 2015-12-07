@@ -3,27 +3,21 @@
     <td>
         <%= link_to bookmark.smid, { :controller => 'home', :action => 'movie', :id => bookmark.smid }, :data => { :'no-turbolink' => '1' }, :class => 'bookmark'  %>
     </td>
-    <%= form_tag({:controller => 'my_page', :action => 'update'}, :id => 'update-fusen') do %>
-    <td class="Editable" input type="text" name="vpos_time">
-        <%= vpos_to_h_mm_ss(bookmark.start_vpos) %>        
+    <%= form_tag({:controller => 'my_page', :action => 'update'}) do %>
+    <%= hidden_field_tag :id, bookmark.id %>
+    <td class="editable">
+        <%= text_field_tag :start_vpos, bookmark.start_vpos, :style => "display: none;", :class => "start_vpos"%>
+        <%= content_tag "span", vpos_to_h_mm_ss(bookmark.start_vpos), :class => "start_vpos" %>
     </td>
-    <td class="Editable" input type="text" name="comment">
-        <%= bookmark.comment %>
+    <td class="editable">
+        <%= text_field_tag :comment, bookmark.comment, :style => "display: none;", :class => "comment" %>
+        <%= content_tag "span", bookmark.comment, :class => "comment" %>
     </td>
     <td>
-        <input class="Edit" type="submit" value="登録！" >
+        <%= submit_tag "更新", :style => "display: none;", :class => "btnGroup" %>
+        <%= button_tag "キャンセル", :style => "display: none;", :type => "button", :class => "btnCancel btnGroup", :data => { :no => bookmark.id } %>
+        <%= button_tag "編集", :type => "button", :class => "btnEdit", :data => { :no => bookmark.id } %>
     </td>
     <% end %>
 </tr>
-
-<% end %>
-
-<% for bookmarks in @bookmark %>
-  <% bookmarks_for bookmark, :index => bookmark.id do |field| %>
-    <tr>
-      <td><%= bookmark.text_field :s_to_h_mm_ss(bookmark.start_vpos) %></td>
-      <td><%= bookmark.text_field :bookmark.comment %></td>
-    </tr>
-  <% end %>
-  <p><%= submit_tag "一括更新" %></p>
 <% end %>
