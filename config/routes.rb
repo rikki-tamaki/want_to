@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/admin' => 'admin/base#index'
   get 'welcome' => 'welcome#index'
   get 'user/:id' => 'user#show', constraints: { id: /[0-9]+/ }
+  # get 'sign_in', :to => 'devise/sessions#edit', :as => :edit_user_registration
 
   post 'my_page/update'
 
