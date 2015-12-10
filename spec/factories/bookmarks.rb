@@ -4,6 +4,7 @@ FactoryGirl.define do
     smid "sm9"
     start_vpos 3000
     comment 'bookmark_user2_sm9_1'
+    video_length 6000
 
     factory :bookmark_user2_sm9_2, class: Bookmark do
       start_vpos 13000
@@ -23,6 +24,7 @@ FactoryGirl.define do
     smid "sm13"
     start_vpos 3000
     comment 'bookmark_user1_sm13_1'
+    video_length 6000
 
     factory :bookmark_user2_sm13_1, class: Bookmark do
       comment 'bookmark_user2_sm13_1'

@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123092238) do
+ActiveRecord::Schema.define(version: 20151209125501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookmarks", force: :cascade do |t|
-    t.string   "smid",       null: false
-    t.integer  "start_vpos", null: false
+    t.string   "smid",         null: false
+    t.integer  "start_vpos",   null: false
     t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id",    null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id",      null: false
+    t.integer  "video_length", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,11 +39,11 @@ ActiveRecord::Schema.define(version: 20151123092238) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "nickname"
     t.string   "uid",                    default: "", null: false
     t.string   "provider",               default: "", null: false
     t.string   "name"
     t.string   "token",                  default: "", null: false
+    t.string   "nickname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

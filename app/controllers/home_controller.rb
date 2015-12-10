@@ -189,7 +189,8 @@ class HomeController < ApplicationController
     smid = params[:smid]
     start_vpos = params[:start_vpos]
     comment = params[:comment]
-    bookmark = Bookmark.new(smid: smid, start_vpos: start_vpos, comment: comment)
+    video_length = params[:video_length]
+    bookmark = Bookmark.new(smid: smid, start_vpos: start_vpos, comment: comment, video_length: video_length)
     bookmark.user_id = current_user.id
     bookmark.save
     @bookmarks = [bookmark]

@@ -13,6 +13,7 @@ ja:
         smid: 動画ID
         start_vpos: 再生開始位置
         comment: コメント
+        video_length: 動画再生時間
     models:
       user: "ユーザ"
       bookmark: ふせん

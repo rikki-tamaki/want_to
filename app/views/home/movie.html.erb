@@ -71,6 +71,7 @@ $(function() {
                     <%= form_tag({:controller => 'home', :action => 'create'}, :remote => true, :class => 'form-ajax', :id => 'create-fusen') do %>
                         <%= hidden_field_tag :smid, @id %>
                     <%= hidden_field_tag :start_vpos, 0, :id => 'vpos' %>
+                    <%= hidden_field_tag :video_length, @vpos_video_length %>
                     <div class="input-group">
                         <%= text_field_tag :comment, "", :class => "form-control", placeholder: "ふせんにコメントをつけてみる" %>
                         <span class="input-group-btn">
