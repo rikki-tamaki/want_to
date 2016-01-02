@@ -18,6 +18,8 @@
  *= require_self
  *= require devise_bootstrap_views
  *= require font-awesome
+ *= require dataTables.bootstrap.min
+ *= require timeline
  */
 
 .introjs-helperNumberLayer {
@@ -27,4 +29,8 @@
 .btn-no-padding {
     padding: 6px 12px !important;
     margin-bottom: 0px !important;
+}
+
+.tab-pane {
+    margin-top: 20px;
 }

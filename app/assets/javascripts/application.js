@@ -18,6 +18,8 @@
 //= require turbolinks
 //= require jquery.turbolinks
 //= require introjs
+//= require jquery.dataTables.min
+//= require dataTables.bootstrap.min
 //= require_tree .
 
 (function($) {
@@ -36,3 +38,28 @@
         }
     });
 })(jQuery);
+
+function createDataTable(selector, pageLength, columns) {
+    $(selector).DataTable({
+        "pageLength": pageLength,
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "order": [],
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "bStateSave": true,
+        "retrieve": true,
+        "language": {
+            "emptyTable": "ふせんがありません。",
+            "infoEmpty": "",
+            "info": " _PAGE_ / _PAGES_ ページ ",
+            "paginate": {
+                "previous": "前",
+                "next": "次",
+            },
+        },
+        "columns": columns,
+    });
+}
